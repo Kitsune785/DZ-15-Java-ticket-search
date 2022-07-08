@@ -36,16 +36,7 @@ public class TicketsManagerTest {
         manager.addNewTickets(item9);
         manager.addNewTickets(item7);
     }
-
-    @Test
-    public void shouldNotFindTravel() {
-
-        Tickets[] expected = new Tickets[]{};
-        Tickets[] actual = manager.findAll(null, null);
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
+    
     @Test
     public void shouldSortPrice() {
 
@@ -65,7 +56,7 @@ public class TicketsManagerTest {
     }
 
     @Test
-    public void test() {            // поменять название
+    public void sortingOneValues() {
 
         Tickets[] expected = new Tickets[]{item1};
         Tickets[] actual = new Tickets[]{item1};
@@ -74,7 +65,7 @@ public class TicketsManagerTest {
     }
 
     @Test
-    public void test2() {            // поменять название
+    public void sortingEmptyValues() {
 
         Tickets[] expected = new Tickets[]{};
         Tickets[] actual = new Tickets[]{};
@@ -105,6 +96,15 @@ public class TicketsManagerTest {
 
         Tickets[] expected = new Tickets[]{};
         Tickets[] actual = manager.findAll("BIA", "");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotFindTravel() {
+
+        Tickets[] expected = new Tickets[]{};
+        Tickets[] actual = manager.findAll("","" );
 
         Assertions.assertArrayEquals(expected, actual);
     }
