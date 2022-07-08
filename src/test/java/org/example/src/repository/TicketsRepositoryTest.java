@@ -73,4 +73,3 @@ public class TicketsRepositoryTest {
         Assertions.assertEquals(expected, actual);
     }
 }
-

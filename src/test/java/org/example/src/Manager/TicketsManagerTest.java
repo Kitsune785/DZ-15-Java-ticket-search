@@ -26,15 +26,24 @@ public class TicketsManagerTest {
 
     @BeforeEach
     public void setup() {
-        manager.addNewTickets(item1);
-        manager.addNewTickets(item2);
-        manager.addNewTickets(item3);
+        manager.addNewTickets(item5);       // добавление не попорядку, для проверки сортировки
         manager.addNewTickets(item4);
-        manager.addNewTickets(item5);
         manager.addNewTickets(item6);
-        manager.addNewTickets(item7);
+        manager.addNewTickets(item2);
+        manager.addNewTickets(item1);
+        manager.addNewTickets(item3);
         manager.addNewTickets(item8);
         manager.addNewTickets(item9);
+        manager.addNewTickets(item7);
+    }
+
+    @Test
+    public void shouldNotFindTravel() {
+
+        Tickets[] expected = new Tickets[]{};
+        Tickets[] actual = manager.findAll(null, null);
+
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -42,6 +51,15 @@ public class TicketsManagerTest {
 
         Tickets[] expected = new Tickets[]{item1, item2, item3, item4, item5, item6, item7, item8, item9};
         Tickets[] actual = new Tickets[]{item1, item2, item4, item3, item5, item6, item7, item8, item9}; // 3 дороже 4-го
+        Arrays.sort(expected);
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void sortingТotАllАdded() {
+
+        Tickets[] expected = new Tickets[]{item1, item2, item3, item4, item5};
+        Tickets[] actual = new Tickets[]{item1, item2, item4, item3, item5}; // 3 дороже 4-го
         Arrays.sort(expected);
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -58,8 +76,8 @@ public class TicketsManagerTest {
     @Test
     public void shouldWrongDepartureAirport() {
 
-        Tickets[] actual = manager.findAll("", "EIM");
         Tickets[] expected = new Tickets[]{};
+        Tickets[] actual = manager.findAll("", "EIM");
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -73,5 +91,3 @@ public class TicketsManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 }
-
-
