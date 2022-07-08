@@ -65,6 +65,24 @@ public class TicketsManagerTest {
     }
 
     @Test
+    public void test() {            // поменять название
+
+        Tickets[] expected = new Tickets[]{item1};
+        Tickets[] actual = new Tickets[]{item1};
+        Arrays.sort(expected);
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void test2() {            // поменять название
+
+        Tickets[] expected = new Tickets[]{};
+        Tickets[] actual = new Tickets[]{};
+        Arrays.sort(expected);
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSortTravelTime() {
 
         Tickets[] expected = new Tickets[]{item1};
